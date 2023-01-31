@@ -5,9 +5,7 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('breed', {
     id:{
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      initialAutoIncrement: 300,
+      type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
     },

@@ -51,6 +51,22 @@ router.get('/dogs/:idRaza', async function (req, res) {
       res.send(nameDb || breedSelected)
 })
 
+router.post ('/dogs', async function(req, res){
+     const { nombre, altura, peso, anoDeVida, temperament} = req.body;
+     const idFecha = new Date()
+     const razas = await Breed.create({
+         nombre: nombre,
+         altura: altura,
+         peso: peso,
+         anoDeVida: anoDeVida,
+         id: idFecha.getTime()
+    })
+     await razas.setTemperaments([...temperament])
+
+     res.json(razas)
+})
+
+
 router.get('/temperament', async function(req, res){
 
 const response = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${APIKEY}`);
