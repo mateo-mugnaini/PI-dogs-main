@@ -1,0 +1,27 @@
+.container-LandingPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('http://www.mascotahogar.com/1920x1080/fondo-divertido-de-perros.jpg');
+    width: 100%;
+    height: 100vh;
+}
+
+.botonIngreso{
+    display: flex;
+    align-items: center;
+    color: blanchedalmond;
+    font-size: 50px;
+    text-decoration: none;
+}
+
+.container-Text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 150px;
+
+}

@@ -1,0 +1,10 @@
+.container-razas{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.imagenPerro{
+    width: 300px;
+    height: 400px;
+}

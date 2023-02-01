@@ -1,0 +1,8 @@
+.container-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 15px;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
