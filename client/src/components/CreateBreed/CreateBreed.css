@@ -1,0 +1,101 @@
+.container-create{
+    display: flex;
+    flex-direction: column;
+    background: fixed;
+    background-image: url('https://i.pinimg.com/originals/10/7c/34/107c34017e6034427d23481ff2389fe9.jpg');
+    background-position: center;
+    width: 100%; 
+    height: 100vh;
+}
+
+.Form-fondo{
+    position: relative;
+    background-color: rgba(51, 51, 51, 0.571);
+    width: 800px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 120px;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 9px 38px rgba(0, 0, 0, 0.388), 0 5px 12px rgb(0 0 0 / 22%);
+}
+
+.fondo-texto{
+    color: white;
+    position: relative;
+    background-color: rgba(51, 51, 51, 0.571);
+    width: 800px;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    left:340px;
+    top: 100px;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 9px 38px rgba(0, 0, 0, 0.388), 0 5px 12px rgb(0 0 0 / 22%);
+}
+
+
+
+.form-CB{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+    width: 100%;
+}
+
+.div-Label{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.input-marco{
+    background-color: rgba(35, 35, 35, 0.87);
+    color: white;
+}
+.input-select{
+    background-color: rgba(51, 51, 51, 0.74);
+    color: white;
+}
+
+.label{
+    display: flex;
+    /* justify-content: start */
+    color:azure;
+    font-size: 20px;
+}
+
+.boton-crear{
+    background-color: chocolate;
+    border: none;
+    font-size: 30px;
+    margin-top: 30px;
+    width: 860px;
+    height: 50px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;   
+}
+
+.texto-Titulo{
+    font-size: 25px;
+    color: chocolate;
+    text-shadow: 0 9px 38px rgba(0, 0, 0, 0.388), 0 5px 12px rgb(0 0 0 / 22%);
+}
+
+.texto-parrafo{
+    font-size: 18px ;
+    text-shadow: 0 9px 38px rgba(0, 0, 0, 0.388), 0 5px 12px rgb(0 0 0 / 22%);
+}
+
+.input-marco-altura{
+    background-color: rgba(35, 35, 35, 0.87);
+    color: white;
+    height: 20px;
+    width: 60px;
+}

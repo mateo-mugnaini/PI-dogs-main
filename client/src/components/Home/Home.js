@@ -11,11 +11,12 @@ function Home(props){
    
     useEffect(() => {
         if (!props.filtered) props.getBreeds();
-        console.log(props.breeds);
       }, []);
     return(
         <div className="conteiner-home">
+          <div className="card-home">
             <Cards/>
+          </div>
         </div>
     )
 } 
@@ -26,5 +27,6 @@ function mapStateToProps(state) {
       filtered: state.filtered,
     };
   }
+
 
 export default connect(mapStateToProps, { getBreeds })(Home);

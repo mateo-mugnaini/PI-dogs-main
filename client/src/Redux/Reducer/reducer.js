@@ -5,13 +5,13 @@ import { GET_BREEDS,
     GET_FILTER_TEMPERAMENTS,
     ORDER_BY_NAME,
     ORDER_BY_WEIGHT,
+    GET_DETAIL
    } from "../Actions/actions_type"
 //codigo
 const initialState = {
     breeds : [],
     temperaments: [],
     breed: [],
-    all: [],
     filtered: false,
 }
 
@@ -25,9 +25,10 @@ if (action.type === GET_BREEDS){
 };
 
 if (action.type === GET_BREED){
+    console.log('payload', action.payload)
     return {
         ...state,
-        breed: action.payload
+        breeds: action.payload
     }
 };
 
@@ -62,7 +63,12 @@ if (action.type === ORDER_BY_WEIGHT){
     }
 };
 
-
+if (action.type === GET_DETAIL){
+    return {
+        ...state,
+        breed: action.payload[0]
+    }
+}
 
     return state
 }

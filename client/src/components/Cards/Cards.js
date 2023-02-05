@@ -12,13 +12,19 @@ export default function Cards (){
 
     return(
         <div className="container-cards">
-        {razas.length > 1 && razas.map (e => 
+        {razas.length > 0 && razas.map (e => {
+            const tempArray = []
+            e.temperaments?.map(el => tempArray.push(el.nombre))
+            return (
         <Card
             imagen = {e.image}
-            nombre = {e.name}
-            temperamento = {e.temperament}
-            peso = {e.weight}
-            />)}
-            </div>
+            nombre = {e.name || e.nombre}
+            temperamento = {tempArray.length > 0 ? tempArray.join() : e.temperament }
+            peso = {e.weight?.metric || e.peso}
+            id = {e.id}
+            />)
+            }
+        )}
+        </div>
     )
 }

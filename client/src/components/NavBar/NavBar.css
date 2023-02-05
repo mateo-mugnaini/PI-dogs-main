@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;900&family=Rubik+Bubbles&family=Shadows+Into+Light&display=swap');
+
+.container-NV{
+    display: flex;
+    justify-content: space-around;
+    background-image: url('https://i.pinimg.com/originals/10/7c/34/107c34017e6034427d23481ff2389fe9.jpg');
+    height: 90px;
+    position: absolute;
+    width: 100%;
+    background: linear-gradient(180deg, rgb(0, 0, 0), transparent);
+
+  }
+
+.icon-NV{
+    display: flex;
+    position: relative;
+    top: 10px;
+    right: 100px;
+    height: 60px;
+    width: 60px;
+}
+
+.btn-NV{
+    display: flex;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 800;
+    color: chocolate;
+    font-family: 'Roboto';
+   
+}

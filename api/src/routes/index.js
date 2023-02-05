@@ -17,8 +17,10 @@ const router = Router();
 router.get("/dogs", async function (req, res) {
     const { name } = req.query
     if (name) {
-        const response = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${ name }`);
+        const response = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${ name }&api_key=${APIKEY}`);
         const data = response.data;
+        const responseImage = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${APIKEY}`);
+        const elementWithImage = responseImage.data.filter((el) => data[0].reference_image_id === el.reference_image_id)
         const nameDb = await Breed.findAll({
             where: {
                 nombre: name
@@ -26,7 +28,7 @@ router.get("/dogs", async function (req, res) {
             attributes: ['nombre', 'peso'],
             include: Temperament,
         });    
-        res.send(data || nameDb)
+        res.send(elementWithImage || nameDb)
     } else {
         const breedDb = await Breed.findAll({
             attributes: ["nombre", "peso"],
