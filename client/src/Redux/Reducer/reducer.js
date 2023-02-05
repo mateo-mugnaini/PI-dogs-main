@@ -4,7 +4,7 @@ import { GET_BREEDS,
     GET_TEMPERAMENTS,
     GET_FILTER_TEMPERAMENTS,
     ORDER_BY_NAME,
-    ORDER_BY_WEIGHT,
+    // ORDER_BY_WEIGHT,
     GET_DETAIL
    } from "../Actions/actions_type"
 //codigo
@@ -39,30 +39,6 @@ if (action.type === GET_TEMPERAMENTS){
     }
 };
 
-if (action.type === GET_FILTER_TEMPERAMENTS){
-    return {
-        ...state,
-        temperaments: action.payload,
-        filtered: true
-    }
-};
-
-if (action.type === ORDER_BY_NAME){
-    return {
-        ...state,
-        breeds: action.payload,
-        filtered: true
-    }
-};
-
-if (action.type === ORDER_BY_WEIGHT){
-    return {
-        ...state,
-        breeds: action.payload,
-        filtered: true
-    }
-};
-
 if (action.type === GET_DETAIL){
     return {
         ...state,
@@ -70,5 +46,35 @@ if (action.type === GET_DETAIL){
     }
 }
 
-    return state
+if (action.type === ORDER_BY_NAME){
+    const allBreeds = [...state.breeds];
+    console.log(state.breeds)
+    allBreeds.sort((a,b) => {
+        let ordenA = a.name ? a.name.toUpperCase() : '' ;
+        let ordenB = b.name ? b.name.toUpperCase() : '';
+
+        if (action.payload === 'A-Z'){
+            if (ordenA === ordenB){
+                return 0;
+            } else if (ordenA < ordenB){
+                return -1;
+            } return -1
+        }
+        if (action.payload === 'Z-A') {
+            if (ordenA === ordenB) {
+              return 0;
+            } else if (ordenA < ordenB) {
+              return 1;
+            }
+            return -1;
+          }
+        });
+    return {
+        ...state,
+        breeds: allBreeds,
+        filtered: true
+    }
+};
+
+    return state // Estado base
 }

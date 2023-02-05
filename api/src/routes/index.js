@@ -15,7 +15,7 @@ const router = Router();
 
 
 router.get("/dogs", async function (req, res) {
-    const { name } = req.query
+    const { name, tempName } = req.query
     if (name) {
         const response = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${ name }&api_key=${APIKEY}`);
         const data = response.data;
@@ -23,15 +23,27 @@ router.get("/dogs", async function (req, res) {
         const elementWithImage = responseImage.data.filter((el) => data[0].reference_image_id === el.reference_image_id)
         const nameDb = await Breed.findAll({
             where: {
-                nombre: name
+                name: name
             },
-            attributes: ['nombre', 'peso'],
+            attributes: ['name', 'weight'],
             include: Temperament,
         });    
         res.send(elementWithImage || nameDb)
+    } else if(tempName){
+        const responseAPI = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${APIKEY}`);
+        const filteredBreeds = responseAPI.data.filter((e) => e.temperament?.includes(tempName))
+        const BreedsDB = await Breed.findAll({
+            include: Temperament
+    })
+    const filteredBreedsDB = BreedsDB.filter((e) => {
+        const objeto = e.temperaments.filter(f => f.nombre === tempName)
+        return objeto.length > 0;
+     });
+        const allBreeds = [...filteredBreedsDB, ...filteredBreeds]
+        res.send(allBreeds)
     } else {
         const breedDb = await Breed.findAll({
-            attributes: ["nombre", "peso"],
+            attributes: ["name", "weight"],
             include: Temperament,
         });
         const response = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${APIKEY}`);
@@ -47,7 +59,7 @@ router.get('/dogs/:idRaza', async function (req, res) {
     const response = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${APIKEY}`);
     const breedSelected = response.data.filter(w => w.id === Number(idRaza))
     const nameDb = await Breed.findByPk(idRaza,{
-        attributes: ['nombre', 'peso', 'altura', 'anoDeVida'],
+        attributes: ['name', 'weight', 'height', 'life_span'],
         include: Temperament,
       });
       res.send(nameDb || breedSelected)
@@ -57,10 +69,10 @@ router.post ('/dogs', async function(req, res){
      const { nombre, altura, peso, anoDeVida, temperament} = req.body;
      const idFecha = new Date()
      const razas = await Breed.create({
-         nombre: nombre,
-         altura: altura,
-         peso: peso,
-         anoDeVida: anoDeVida,
+         name: nombre,
+         height: altura,
+         weight: peso,
+         life_span: anoDeVida,
          id: idFecha.getTime()
     })
      await razas.setTemperaments([...temperament])
@@ -76,7 +88,7 @@ const response = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${
         const allTemperaments = [];
         temperamentAPI.map(temp => {
             if (temp.temperament) {
-                allTemperaments.push(...temp.temperament.split(','))
+                allTemperaments.push(...temp.temperament.split(', '))
             }
         }); 
         allTemperaments.forEach(temp => {

@@ -4,12 +4,6 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('temperament', {
-    // id:{
-    //   type: DataTypes.INTEGER,
-    //   autoIncrement: true,
-    //   initialAutoIncrement: 300,
-    //   primaryKey: true,
-    // },
     nombre: {
       type: DataTypes.STRING,
       allowNull: false,

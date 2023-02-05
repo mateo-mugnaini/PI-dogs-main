@@ -2,14 +2,16 @@
 import axios from 'axios';
 import { GET_BREEDS,
          GET_BREED,
-         GET_FILTER_TEMPERAMENTS,
-         ORDER_BY_NAME,
-         ORDER_BY_WEIGHT,
          GET_TEMPERAMENTS,
-         GET_DETAIL
+         GET_DETAIL,
+         ORDER_BY_NAME,
+         GET_FILTER_TEMPERAMENTS,
+        //  ORDER_BY_WEIGHT
         } from "./actions_type";
 
 //codigo
+
+// ----------------------------------------------- GETS -----------------------------------------------//
 
 export function getBreeds(){
     return async function (dispatch){
@@ -24,11 +26,10 @@ export function getBreeds(){
 
 export function getBreed(name){
     return async function (dispatch){
-        console.log('LLEGO AL DISPatch')
+        // console.log('LLEGO AL DISPatch')
         const response = await axios
             .get(`http://localhost:3001/dogs?name=${name}`);
-
-        console.log(response.data, 'response')
+        // console.log(response.data, 'response')
         dispatch({
             type: GET_BREED,
             payload: response.data
@@ -57,23 +58,41 @@ export function getTemperaments(){
     }
 }
 
-export function filterByTemperament(payload){
-    return {
-        type: GET_FILTER_TEMPERAMENTS,
-        payload
-    }
+// ----------------------------------------------- FILTROS -----------------------------------------------//
+
+
+// Filtro Alfabetico --> A - Z || Z - A
+export function orderByName(modo){ 
+        return function(dispatch){
+            console.log('llego al dis')
+            dispatch({
+                type: ORDER_BY_NAME,
+                payload: modo
+            })
+        }
 }
 
-export function orderByName(payload){
-    return {
-        type: ORDER_BY_NAME,
-        payload
-    }
-}
+// Filtro por Peso --> ASCENDENTE || DESCENDENTE
+// export function orderByWeight(modo){ 
+//         return function(dispatch){
+//             dispatch({
+//                 type: ORDER_BY_WEIGHT,
+//                 payload: modo
+//             })
+//         }
+// }
 
-export function orderByWeight(payload){
-    return {
-        type: ORDER_BY_WEIGHT,
-        payload
+
+// Filtro por Temperamento 
+
+export function filterByTemperaments(tempName){
+    return async function (dispatch){
+        // console.log('LLEGO AL DISPatch')
+        const response = await axios
+            .get(`http://localhost:3001/dogs?tempName=${tempName}`);
+        dispatch({
+            type: GET_BREEDS,
+            payload: response.data
+        });
     }
 }

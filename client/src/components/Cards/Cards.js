@@ -18,7 +18,7 @@ export default function Cards (){
             return (
         <Card
             imagen = {e.image}
-            nombre = {e.name || e.nombre}
+            nombre = {e.name}
             temperamento = {tempArray.length > 0 ? tempArray.join() : e.temperament }
             peso = {e.weight?.metric || e.peso}
             id = {e.id}

@@ -1,6 +1,7 @@
 //imports
 import React, { useEffect } from "react";
 import Cards from '../Cards/Cards'
+import Filter from '../Filter/Filter'
 import { getBreeds } from "../../Redux/Actions/actions";
 import { connect } from "react-redux";
 import '../Home/Home.css'
@@ -14,6 +15,9 @@ function Home(props){
       }, []);
     return(
         <div className="conteiner-home">
+          <div className="filter">
+            <Filter/>
+          </div>
           <div className="card-home">
             <Cards/>
           </div>

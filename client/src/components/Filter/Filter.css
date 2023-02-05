@@ -1,0 +1,24 @@
+.container-filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.name-filter{
+    padding-right: 10px;
+}
+.weight-filter{
+    padding-left: 10px;
+    background-color:  rgba(179, 113, 66, 0.568) ;
+
+}
+.filtro{
+    position: relative;
+    top: 120px;
+    /* padding: 10px; */
+    font-size: 20px;
+    border: solid rgb(181, 103, 48) 2px;
+    background-color:  rgba(179, 113, 66, 0.648) ;
+    border-radius: 10px;
+}
+

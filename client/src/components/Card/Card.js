@@ -13,7 +13,7 @@ export default function Card (props){
             <div className="card">
                 <Link to={`/detalle/${props.id}`}>
             <div className="img-card">
-                <img src = {props.imagen?.url} className = 'imagenPerro' />
+                <img className = 'imagenPerro'src = {props.imagen?.url} />
             </div>
             </Link>
             <div className="container-text-card">
