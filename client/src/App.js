@@ -9,15 +9,16 @@ import Detail from './components/Detail/Detail';
 
 
 
-
 // codigo
 function App() {
+
+
 
 const location = useLocation();
 
   return (
     <div className="App">
-      <div>
+    <div>
       </div>
         {location.pathname === '/' ? null : <NavBar/>} 
       <Switch>
@@ -26,6 +27,7 @@ const location = useLocation();
       <Route  path ='/breedcreate' > <CreateBreed/> </Route>
       <Route  path ='/detalle/:idRaza' > <Detail/> </Route>
       </Switch>
+  
     </div>
   );
 }

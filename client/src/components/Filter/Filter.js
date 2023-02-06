@@ -1,5 +1,5 @@
 //imports
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   getBreeds,
@@ -7,7 +7,6 @@ import {
   getTemperaments,
   filterByTemperaments,
 } from "../../Redux/Actions/actions";
-import axios from "axios";
 import "../Filter/Filter.css";
 
 // codigo
@@ -15,9 +14,13 @@ import "../Filter/Filter.css";
 function Filter(props) {
 
     function handleSelectTemperament(e) {
-      console.log(e, e.target.value)
+      if (e.target.value === "All") {
+        props.getBreeds();
+      } else {
       props.filterByTemperaments(e.target.value)
     }
+  }
+
     useEffect(() => {
       props.getTemperaments();
     }, []);
@@ -57,6 +60,7 @@ function Filter(props) {
               onChange={(e) => handleSelectTemperament(e)}
               required
             >
+          <option value="All">Temperamentos</option>
               {props.temperaments &&
                 props.temperaments.map((c) => (
                   <option value={c.name} > {c.nombre}</option>

@@ -1,33 +1,31 @@
 //imports
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import '../Card/Card.css'
-
+import "../Card/Card.css";
 
 //codigo
 
-export default function Card (props){
-
-    return(
-        <div className="container-razas">
-            <div className="card">
-                <Link to={`/detalle/${props.id}`}>
-            <div className="img-card">
-                <img className = 'imagenPerro'src = {props.imagen?.url} />
-            </div>
-            </Link>
-            <div className="container-text-card">
-            <div className="raza">
-                <p> Raza: {props.nombre} </p>
-            </div>
-            <div className="temperamentos">
-                <p>Temperamentos: {props.temperamento} </p>
-            </div>
-            <div className="peso">
-                <p className="text-peso">Peso: {props.peso} kg</p>
-            </div>
-            </div>
-            </div>
+export default function Card(props) {
+  return (
+    <div className="container-razas">
+      <div className="card">
+        <Link to={`/detalle/${props.id}`}>
+          <div className="img-card">
+            <img className="imagenPerro" src={props.imagen?.url} />
+          </div>
+        </Link>
+        <div className="container-text-card">
+          <div className="raza">
+            <p> Raza: {props.nombre} </p>
+          </div>
+          <div className="temperamentos">
+            <p>Temperamentos: {props.temperamento} </p>
+          </div>
+          <div className="peso">
+            <p className="text-peso">Peso: {props.peso} kg</p>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 }

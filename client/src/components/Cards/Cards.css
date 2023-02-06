@@ -1,3 +1,34 @@
+/* ESTILOS GENERAL */
+.container-General{
+    display: flex;
+    flex-direction: column;
+    }
+    
+/* ESTILOS CARDS */
+.container-Cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+    
+/* ESTILOS PAGINATION*/
+.container-Pagination{
+    position: absolute;
+    top: 150px;
+    left: 650px;
+}
+
+.btnPag{
+    font-size: 20px;
+    border: solid rgb(181, 103, 48) 2px;
+    background-color:  rgba(179, 113, 66, 0.648) ;
+    border-radius: 10px;
+    margin: 10px;
+}
+/* 
 .container-cards{
     display: flex;
     flex-direction: row;
@@ -6,3 +37,11 @@
     max-width: 100%;
     flex-wrap: wrap;
 }
+
+.paginationBtns{
+    display: flex;
+}
+
+.btnP{
+    flex-direction: column;
+} */
