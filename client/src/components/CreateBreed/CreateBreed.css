@@ -56,8 +56,11 @@
 }
 
 .input-marco{
-    background-color: rgba(35, 35, 35, 0.87);
-    color: white;
+    font-size: 20px;
+    border: solid rgb(181, 103, 48) 2px;
+    background-color:  rgba(179, 113, 66, 0.648) ;
+    border-radius: 10px;
+    margin-right: 20px;
 }
 .input-select{
     background-color: rgba(51, 51, 51, 0.74);
@@ -94,8 +97,27 @@
 }
 
 .input-marco-altura{
-    background-color: rgba(35, 35, 35, 0.87);
-    color: white;
-    height: 20px;
-    width: 60px;
+    font-size: 15px;
+    width: 110px;
+    border: solid rgb(181, 103, 48) 2px;
+    background-color:  rgba(179, 113, 66, 0.648) ;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.Form-temperamentos{
+    font-size: 20px;
+    width: 130px;
+    border: solid rgb(181, 103, 48) 2px;
+    background-color:  rgba(179, 113, 66, 0.648) ;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.input-marco-altura::placeholder{
+    color:rgba(0, 0, 0, 0.721);
+}
+
+.input-marco::placeholder{
+    color:rgba(0, 0, 0, 0.721);
 }

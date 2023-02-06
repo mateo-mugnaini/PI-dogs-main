@@ -27,21 +27,5 @@
     background-color:  rgba(179, 113, 66, 0.648) ;
     border-radius: 10px;
     margin: 10px;
+    cursor: pointer;
 }
-/* 
-.container-cards{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 15px;
-    max-width: 100%;
-    flex-wrap: wrap;
-}
-
-.paginationBtns{
-    display: flex;
-}
-
-.btnP{
-    flex-direction: column;
-} */

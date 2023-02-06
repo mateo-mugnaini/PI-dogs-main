@@ -9,6 +9,7 @@ import '../LandingPage/LandingPage.css'
 export default function LandingPage (){
     return (
         <div className="container-LandingPage">
+        <div className="container-Textos">
         <div className="container-Text">
         <div>
             <Link className="botonIngreso" to ={'/home'}>
@@ -18,6 +19,7 @@ export default function LandingPage (){
         <div className="texto-Landing">
             <h1> API DOGS  </h1>
             <h2> From Mateo Mugnaini  </h2>
+        </div>
         </div>
         </div>
         </div>

@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getDetail } from '../../Redux/Actions/actions';
-
 import '../Detail/Detail.css';
 
 
@@ -21,13 +20,34 @@ function Detail({getDetail, breed}){
   }, [])
 
   return(
-    <div className="contenedorDetalle">
+    <div className="contenedor-Detalle">
       {breed && (
-        <div className='contenedorTextosDetalle'>
-          <h1 className="TextoDetalle">Nombre: {breed.name}</h1>
-          <h3 className="TextoDetalle">Altura:  {breed.height?.metric} cm</h3>
-          <p className="TextoDetalle">Peso:  {breed.weight?.metric} kg</p>
-          <p className='TextoDetalle'> Año de vida: {breed.life_span}</p>
+        <div className='contenedor-Textos-Detalle'>
+        {/* NOMBRE */}
+          <div className='contenedor-Texto'>
+          <h1 className="TextoTitulo">NOMBRE:</h1>
+          <h3 className="Texto">{breed.name}</h3>
+          </div>
+        {/* PESO */}
+          <div className='contenedor-Texto'>
+          <h1 className="TextoTitulo">PESO:</h1>
+          <h3 className="Texto">{breed.weight?.metric} kg</h3>
+          </div>
+        {/* ALTURA */}
+          <div className='contenedor-Texto'>
+          <h1 className="TextoTitulo">ALTURA:</h1>
+          <h3 className="Texto">{breed.height?.metric} cm</h3>
+          </div>
+          {/* AÑO DE VIDA */}
+          <div className='contenedor-Texto'>
+          <h1 className="TextoTitulo">AÑO DE VIDA:</h1>
+          <h3 className="Texto">{breed.life_span}</h3>
+          </div>
+          {/* TEMPERAMENTOS */}
+          <div className='contenedor-Texto'>
+          <h1 className="TextoTitulo">TEMPERAMENTOS:</h1>
+          <h3 className="Texto">{breed.temperament}</h3>
+          </div>
           <img className='imgDetalle' src= {breed.image?.url}/>
         </div>
       )}

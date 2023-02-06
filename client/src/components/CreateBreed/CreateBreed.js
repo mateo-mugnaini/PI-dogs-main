@@ -106,8 +106,8 @@ function CreateBreed(props) {
         </div>
       </div>
       <form className="form-CB" onSubmit={(e) => onSubmit(e)}>
-{/* -------------------------------NOMNRE---------------------------------------------------------------------*/}
         <div className="Form-fondo">
+{/* -------------------------------NOMNRE---------------------------------------------------------------------*/}
           <div className="div-Label">
             <label className="label">Nombre: </label>
             <input
