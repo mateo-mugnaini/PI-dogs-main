@@ -14,7 +14,6 @@ export default function NavBar(props) {
         <img className="icon-NV" src={Img} />
         <div className="div-Btn-NV">
           <Link className="btn-NV" to="/home">
-            {" "}
             <p> HOME </p>{" "}
           </Link>
         </div>
@@ -23,10 +22,14 @@ export default function NavBar(props) {
         </div>
         <div className="div-Btn-NV">
           <Link className="btn-NV" to="/breedcreate">
-            {" "}
             <p> BREED CREATE </p>{" "}
           </Link>
         </div>
+        {/* <div className="div-Btn-NV">
+          <Link className="btn-NV" to="/breedcreate">
+            <img className="icon-NV" src="client/src/components/NavBar/github-mark.png"/>
+          </Link>
+        </div> */}
       </div>
     </nav>
   );

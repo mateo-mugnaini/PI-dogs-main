@@ -1,5 +1,5 @@
 //imports
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {
   getBreeds,
@@ -7,17 +7,20 @@ import {
   getTemperaments,
   filterByTemperaments,
 } from "../../Redux/Actions/actions";
+
 import "../Filter/Filter.css";
 
 // codigo
 
 function Filter(props) {
 
+  const [type, setType] = useState('All');
+
     function handleSelectTemperament(e) {
       if (e.target.value === "All") {
         props.getBreeds();
       } else {
-      props.filterByTemperaments(e.target.value)
+      props.filterByTemperaments(e.target.value, type)
     }
   }
 
@@ -36,6 +39,11 @@ function Filter(props) {
     }
   }
 
+
+  function handleBdApi(e){
+    props.getBreeds(e.target.value)
+    setType(e.target.value)
+  }
 
 
   return (
@@ -66,6 +74,18 @@ function Filter(props) {
                   <option value={c.name} > {c.nombre}</option>
                 ))}
             </select>
+      </div>
+            {/* --------------------ORDENAR BD o API --------------------*/}
+            <div className="name-filter">
+        <select
+          className="filtro"
+          name="Alfabeticamente"
+          onChange={(f) => handleBdApi(f)}
+        >
+          <option value= 'All'>All</option>
+          <option value="DB">Data Base</option>
+          <option value="API">API</option>
+        </select>
       </div>
 
     </div>

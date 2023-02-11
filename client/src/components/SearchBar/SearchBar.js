@@ -14,8 +14,7 @@ function SearchBar(props){
     const dispatch = useDispatch()
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log(nameBreeds)
-        await dispatch(getBreed(nameBreeds))
+        dispatch(getBreed(nameBreeds, 'ALL'))
       }
 
     return (

@@ -5,7 +5,7 @@ import "../Cards/Cards.css";
 import { useSelector } from "react-redux";
 
 //codigo
-export default function Cards() {
+export default function Cards() { 
   // CARDS
 
   const razas = useSelector((state) => state.breeds); 
@@ -14,17 +14,16 @@ export default function Cards() {
 
   const [numeroPagina, setNumeroPagina] = useState(1); 
 
-  const grupo = 9;
+  const grupo = 8;
   const conteoFinal = numeroPagina * grupo;
   const conteoInicial = conteoFinal - grupo;
 
-  const raza =
-    razas && razas.slice ? razas.slice(conteoInicial, conteoFinal) : [];
+  const raza = razas && razas.slice ? razas.slice(conteoInicial, conteoFinal) : []; 
 
   return (
     <div className="container-General">
       <div className="container-Cards">
-{/* ------------------------------MAPEO DE LAS TARJETAS-----------------------------------------*/}
+{/* ------------------------------MAPEO DE LAS TARJETAS----------------------------------------- */}
         {raza.length > 0 &&
           raza.map((e) => {
             const tempArray = [];
@@ -37,7 +36,7 @@ export default function Cards() {
                 temperamento={
                   tempArray.length > 0 ? tempArray.join() : e.temperament
                 }
-                peso={e.weight?.metric || e.peso}
+                peso={e.weight?.metric || e.weight}
                 id={e.id}
               />
             );

@@ -4,14 +4,16 @@ import { connect } from "react-redux";
 import { getTemperaments } from "../../Redux/Actions/actions";
 import axios from "axios";
 import "./CreateBreed.css";
+import { Link } from "react-router-dom";
+
 
 // codigo
 
 function CreateBreed(props) {
 
 
-  const [inputs, setInputs] = useState({
-    nombre: "",
+  const [inputs, setInputs] = useState({  // Seteo mi estado local asi puediendo modoficarlo de manera local
+    nombre: "",                           // useState se utiliza para crear un objeto de estado inputs.
     altura_max: "",
     altura_min: "",
     peso_min: "",
@@ -22,26 +24,21 @@ function CreateBreed(props) {
     nombreTemperamento: [],
   });
 
-  function handleSelectTemperament(e) {
-    // Elijo temperamentos
+  function handleSelectTemperament(e) {     // Elijo temperamentos
+
     const filterName = props.temperaments.filter(
       (c) => c.id.toString() === e.target.value
     );
-
-    console.log(filterName, filterName[0].nombre)
 
     setInputs({
       ...inputs,
       temperamentos: [...inputs.temperamentos, e.target.value],
       nombreTemperamento: [...inputs.nombreTemperamento, filterName[0].nombre],
     });
-    {
-      console.log(inputs.nombreTemperamento, inputs.temperamentos);
-    }
   }
 
-  function handleChange(e) {
-    // Modifico los estados
+  function handleChange(e) {      // Modifico los estados
+
     setInputs({
       ...inputs,
       [e.target.name]: e.target.value,
@@ -76,12 +73,12 @@ function CreateBreed(props) {
   }
 
   function handleDelete(e) {
-    const deleteTemperament = inputs.temperamentos.filter(
+    const deleteTemperament = inputs.nombreTemperamento.filter(
       (c) => c !== e.target.name
     );
     setInputs({
       ...inputs,
-      temperamentos: deleteTemperament,
+      nombreTemperamento: deleteTemperament,
     });
   }
 
@@ -165,7 +162,7 @@ function CreateBreed(props) {
             />
             <label className="label"> kg</label>
           </div>
-{/* --------------------------------AÑO DE VUDA--------------------------------------------------------------- */}
+{/* --------------------------------AÑO DE VIDA--------------------------------------------------------------- */}
           <div className="div-Label">
             <label className="label">Años de vida:</label>
             <input
@@ -205,8 +202,10 @@ function CreateBreed(props) {
           </div>
 {/* ----------------------------------BOTON SUMMIT------------------------------------------------------------ */}
           <div className="boton">
+             <Link to ='/home'>
             <input className="boton-crear" type="submit" value="Crear!" />
             {/* Boton de Crear */}
+          </Link>
           </div>
         </div>
       </form>
@@ -220,9 +219,7 @@ function CreateBreed(props) {
                 className="boton-temperamentos"
                 name={c}
                 onClick={(e) => handleDelete(e)}
-              >
-                X
-              </button>
+                > X </button>
               <p>{c}</p>
             </div>
           ))}

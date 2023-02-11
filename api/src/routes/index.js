@@ -15,20 +15,25 @@ const router = Router();
 
 
 router.get("/dogs", async function (req, res) {
-    const { name, tempName } = req.query
+    const { name, tempName, type = 'All' } = req.query
     if (name) {
         const response = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${ name }&api_key=${APIKEY}`);
         const data = response.data;
         const responseImage = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${APIKEY}`);
-        const elementWithImage = responseImage.data.filter((el) => data[0].reference_image_id === el.reference_image_id)
+        const elementWithImage = responseImage.data.filter((el) => data[0]?.reference_image_id === el.reference_image_id)
         const nameDb = await Breed.findAll({
             where: {
                 name: name
             },
             attributes: ['name', 'weight'],
             include: Temperament,
-        });    
-        res.send(elementWithImage || nameDb)
+        });
+        res.json(
+            type === 'DB' ? nameDb :
+            type === 'API' ? elementWithImage :
+            type === 'All' ? nameDb || elementWithImage : null
+          );
+        // res.send(elementWithImage || nameDb)
     } else if(tempName){
         const responseAPI = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${APIKEY}`);
         const filteredBreeds = responseAPI.data.filter((e) => e.temperament?.includes(tempName))
@@ -40,17 +45,27 @@ router.get("/dogs", async function (req, res) {
         return objeto.length > 0;
      });
         const allBreeds = [...filteredBreedsDB, ...filteredBreeds]
-        res.send(allBreeds)
+        res.send(
+            type === 'DB' ? filteredBreedsDB :
+            type === 'API' ? filteredBreeds :
+            type === 'All' ? allBreeds : null
+          );
+        // res.send(allBreeds)
     } else {
         const breedDb = await Breed.findAll({
-            attributes: ["name", "weight"],
+            attributes: ["name", "weight", 'id'],
             include: Temperament,
         });
         const response = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${APIKEY}`);
         const breedAPI = response.data;
-        const allDogs = [...breedAPI, ...breedDb];
-        // console.log (response, APIKEY)
-        res.send(allDogs);
+        const allBreeds = [...breedAPI, ...breedDb];
+        console.log(type, type.toString() === 'DB')
+        res.send(
+            type === 'DB' ? breedDb :
+            type === 'API' ? breedAPI :
+            type === 'All' ? allBreeds : null
+          );
+    // res.send(allBreeds)
     }
 });
 
@@ -62,7 +77,8 @@ router.get('/dogs/:idRaza', async function (req, res) {
         attributes: ['name', 'weight', 'height', 'life_span'],
         include: Temperament,
       });
-      res.send(nameDb || breedSelected)
+      console.log(nameDb)
+      res.send(nameDb ? [nameDb] : breedSelected)
 })
 
 router.post ('/dogs', async function(req, res){
@@ -100,7 +116,6 @@ const response = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${
         
     }) 
     const temperamentos = await Temperament.findAll()
-    console.log(allTemperaments, temperamentos)
     res.send(temperamentos)
 })
 

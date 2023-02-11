@@ -6,5 +6,5 @@ export const GET_BREED = 'GET_BREED'; //  Trae la info de la busqueda
 // ------------------------------------- FILTROS -------------------------------------//
 export const FILTER_TEMPERAMENTS = 'GET_FILTER_TEMPERAMENTS'; // Filtra por temperamentos
 export const ORDER_BY_NAME = 'ORDER_BY_NAME'; // Ordena alfabeticamente A -> Z || Z -> A
-// export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'; // Ordena de manera Ascendente o Descendente por Peso
+export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'; // Ordena de manera Ascendente o Descendente por Peso
 export const FILTER_BY_CREATER = 'ORDER_BY_CREATER'; // Filtra entre las razas traidas por la api y las creadas por el usuario

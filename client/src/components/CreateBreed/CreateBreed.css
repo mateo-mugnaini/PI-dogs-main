@@ -15,7 +15,6 @@
     height: 250px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     top: 120px;
     padding: 30px;
     border-radius: 30px;
@@ -51,8 +50,7 @@
 
 .div-Label{
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
+    padding:10px;
 }
 
 .input-marco{
@@ -60,7 +58,7 @@
     border: solid rgb(181, 103, 48) 2px;
     background-color:  rgba(179, 113, 66, 0.648) ;
     border-radius: 10px;
-    margin-right: 20px;
+    margin-right: 420px;
 }
 .input-select{
     background-color: rgba(51, 51, 51, 0.74);
@@ -71,14 +69,16 @@
     display: flex;
     /* justify-content: start */
     color:azure;
+    margin-left: 10px;
     font-size: 20px;
 }
 
 .boton-crear{
-    background-color: chocolate;
+    background-color: rgb(196, 110, 48);
     border: none;
     font-size: 30px;
-    margin-top: 30px;
+    margin-top: 15px;
+    margin-left: -29px;
     width: 860px;
     height: 50px;
     border-bottom-left-radius: 20px;
@@ -87,7 +87,7 @@
 
 .texto-Titulo{
     font-size: 25px;
-    color: chocolate;
+    color:  rgb(181, 103, 48);
     text-shadow: 0 9px 38px rgba(0, 0, 0, 0.388), 0 5px 12px rgb(0 0 0 / 22%);
 }
 
@@ -101,17 +101,21 @@
     width: 110px;
     border: solid rgb(181, 103, 48) 2px;
     background-color:  rgba(179, 113, 66, 0.648) ;
-    border-radius: 10px;
-    margin-right: 20px;
+    border-radius: 5px;
+    position: relative;
+    /* right: 110px; */
+    /* left:30px; */
+    margin-left: 10px;
 }
 
 .Form-temperamentos{
     font-size: 20px;
-    width: 130px;
+    width: 200px;
     border: solid rgb(181, 103, 48) 2px;
     background-color:  rgba(179, 113, 66, 0.648) ;
-    border-radius: 10px;
-    margin-right: 20px;
+    border-radius: 5px;
+    position: relative;
+    /* right: 420px; */
 }
 
 .input-marco-altura::placeholder{
@@ -120,4 +124,37 @@
 
 .input-marco::placeholder{
     color:rgba(0, 0, 0, 0.721);
+}
+
+.opciones-temperamentos{
+    display: flex;
+    border: solid  rgb(205, 133, 31) 2px;
+    border-radius: 30px;
+    background-color: rgba(51, 51, 51, 0.498);
+    box-shadow: 0 9px 38px rgba(0, 0, 0, 0.549), 0 5px 12px rgba(0, 0, 0, 0.577);
+    width: 350px;
+    height:210px;
+    position: absolute;
+    left: 810px;
+    bottom: 110px;
+}
+
+.temperamento-seleccionado{
+    display: flex;
+    align-items: center;
+    border: solid rgb(181, 103, 48) 2px;
+    background-color:  rgba(179, 113, 66, 0.648);
+    border-radius: 5px;
+    width:35%;
+    height: 30%;
+    margin-top: 20px;
+    margin-left: 20px;  
+}
+
+.boton-temperamentos{
+    background-color: transparent;
+    border: none;
+    color:red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: bolder;
 }

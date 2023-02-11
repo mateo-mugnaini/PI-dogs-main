@@ -5,18 +5,17 @@ import { GET_BREEDS,
          GET_TEMPERAMENTS,
          GET_DETAIL,
          ORDER_BY_NAME,
-         GET_FILTER_TEMPERAMENTS,
-        //  ORDER_BY_WEIGHT
         } from "./actions_type";
 
 //codigo
 
 // ----------------------------------------------- GETS -----------------------------------------------//
 
-export function getBreeds(){
+export function getBreeds(type = 'All'){ 
+    console.log(type)
     return async function (dispatch){
         const response = await axios
-            .get('http://localhost:3001/dogs');
+            .get(`http://localhost:3001/dogs?type=${type}`);
         dispatch({
             type: GET_BREEDS,
             payload: response.data
@@ -24,12 +23,10 @@ export function getBreeds(){
     }
 }
 
-export function getBreed(name){
+export function getBreed(name, type){
     return async function (dispatch){
-        // console.log('LLEGO AL DISPatch')
         const response = await axios
-            .get(`http://localhost:3001/dogs?name=${name}`);
-        // console.log(response.data, 'response')
+            .get(`http://localhost:3001/dogs?name=${name}&type=${type}`);
         dispatch({
             type: GET_BREED,
             payload: response.data
@@ -64,7 +61,6 @@ export function getTemperaments(){
 // Filtro Alfabetico --> A - Z || Z - A
 export function orderByName(modo){ 
         return function(dispatch){
-            console.log('llego al dis')
             dispatch({
                 type: ORDER_BY_NAME,
                 payload: modo
@@ -72,24 +68,13 @@ export function orderByName(modo){
         }
 }
 
-// Filtro por Peso --> ASCENDENTE || DESCENDENTE
-// export function orderByWeight(modo){ 
-//         return function(dispatch){
-//             dispatch({
-//                 type: ORDER_BY_WEIGHT,
-//                 payload: modo
-//             })
-//         }
-// }
-
-
 // Filtro por Temperamento 
 
-export function filterByTemperaments(tempName){
+export function filterByTemperaments(tempName, type){
     return async function (dispatch){
-        // console.log('LLEGO AL DISPatch')
+
         const response = await axios
-            .get(`http://localhost:3001/dogs?tempName=${tempName}`);
+            .get(`http://localhost:3001/dogs?tempName=${tempName}&type=${type}`);
         dispatch({
             type: GET_BREEDS,
             payload: response.data

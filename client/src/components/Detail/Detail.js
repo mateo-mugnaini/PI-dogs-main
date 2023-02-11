@@ -11,13 +11,16 @@ import '../Detail/Detail.css';
 
 function Detail({getDetail, breed}){
 
-  console.log(breed)
   const {idRaza} = useParams();
 
   useEffect(() => {
     getDetail(idRaza)
-    console.log(idRaza)
+    console.log(breed)
   }, [])
+
+  useEffect(() => {
+    console.log(breed)
+  }, [breed])
 
   return(
     <div className="contenedor-Detalle">
@@ -31,12 +34,12 @@ function Detail({getDetail, breed}){
         {/* PESO */}
           <div className='contenedor-Texto'>
           <h1 className="TextoTitulo">PESO:</h1>
-          <h3 className="Texto">{breed.weight?.metric} kg</h3>
+          <h3 className="Texto">{breed.weight?.metric || breed.weight} kg</h3>
           </div>
         {/* ALTURA */}
           <div className='contenedor-Texto'>
           <h1 className="TextoTitulo">ALTURA:</h1>
-          <h3 className="Texto">{breed.height?.metric} cm</h3>
+          <h3 className="Texto">{breed.height?.metric || breed.height} cm</h3>
           </div>
           {/* AÑO DE VIDA */}
           <div className='contenedor-Texto'>
@@ -46,7 +49,7 @@ function Detail({getDetail, breed}){
           {/* TEMPERAMENTOS */}
           <div className='contenedor-Texto'>
           <h1 className="TextoTitulo">TEMPERAMENTOS:</h1>
-          <h3 className="Texto">{breed.temperament}</h3>
+          <h3 className="Texto">{breed.temperament || breed.temperaments?.map(e => e.nombre).join(', ')}</h3>
           </div>
           <img className='imgDetalle' src= {breed.image?.url}/>
         </div>
