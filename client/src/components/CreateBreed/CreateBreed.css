@@ -11,7 +11,7 @@
 .Form-fondo{
     position: relative;
     background-color: rgba(51, 51, 51, 0.571);
-    width: 800px;
+    width: 1000px;
     height: 250px;
     display: flex;
     flex-direction: column;
@@ -25,12 +25,12 @@
     color: white;
     position: relative;
     background-color: rgba(51, 51, 51, 0.571);
-    width: 800px;
+    width: 1000px;
     height: 200px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    left:340px;
+    left:245px;
     top: 100px;
     padding: 30px;
     border-radius: 30px;
@@ -77,9 +77,9 @@
     background-color: rgb(196, 110, 48);
     border: none;
     font-size: 30px;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-left: -29px;
-    width: 860px;
+    width: 1060px;
     height: 50px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;   
@@ -128,27 +128,32 @@
 
 .opciones-temperamentos{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     border: solid  rgb(205, 133, 31) 2px;
-    border-radius: 30px;
+    border-radius: 10px;
     background-color: rgba(51, 51, 51, 0.498);
     box-shadow: 0 9px 38px rgba(0, 0, 0, 0.549), 0 5px 12px rgba(0, 0, 0, 0.577);
-    width: 350px;
-    height:210px;
+    width: 500px;
+    height:230px;
     position: absolute;
-    left: 810px;
+    left: 750px;
     bottom: 110px;
 }
 
 .temperamento-seleccionado{
+    padding: 4px;
+    margin: 5px;
+    height: 40px;
+    width: fit-content;
     display: flex;
-    align-items: center;
-    border: solid rgb(181, 103, 48) 2px;
-    background-color:  rgba(179, 113, 66, 0.648);
-    border-radius: 5px;
-    width:35%;
-    height: 30%;
-    margin-top: 20px;
-    margin-left: 20px;  
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: row;
+    border-radius: 8px;
+    background-color: rgba(205, 132, 31, 0.597);
+    border: solid rgb(205, 133, 31) 2px;
+    font-size: 20px;
 }
 
 .boton-temperamentos{
@@ -157,4 +162,5 @@
     color:red;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: bolder;
+    font-size: 20px;
 }

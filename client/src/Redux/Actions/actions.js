@@ -5,6 +5,7 @@ import { GET_BREEDS,
          GET_TEMPERAMENTS,
          GET_DETAIL,
          ORDER_BY_NAME,
+         ORDER_BY_WEIGHT
         } from "./actions_type";
 
 //codigo
@@ -47,10 +48,10 @@ export function getDetail (idRaza){
 
 export function getTemperaments(){
     return async function (dispatch){
-        let res = await axios.get(`http://localhost:3001/temperament`)
+        let response = await axios.get(`http://localhost:3001/temperament`)
         return dispatch({
             type: GET_TEMPERAMENTS,
-            payload: res.data
+            payload: response.data
         })
     }
 }
@@ -79,5 +80,17 @@ export function filterByTemperaments(tempName, type){
             type: GET_BREEDS,
             payload: response.data
         });
+    }
+}
+
+
+// Filtro por Peso
+
+export function orderByWeight(modo){
+    return function(dispatch){
+        dispatch({
+            type: ORDER_BY_WEIGHT,
+            payload: modo
+        })
     }
 }

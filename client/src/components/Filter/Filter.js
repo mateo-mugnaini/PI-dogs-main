@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import {
   getBreeds,
   orderByName,
+  orderByWeight,
   getTemperaments,
   filterByTemperaments,
 } from "../../Redux/Actions/actions";
@@ -38,6 +39,15 @@ function Filter(props) {
       props.orderByName(e.target.value, props.breeds);
     }
   }
+
+  function handleOrderWe(e) {
+    if (e.target.value === "All") {
+      props.getBreeds();
+    } else {
+      props.orderByWeight(e.target.value, props.breeds);
+    }
+  }
+
 
 
   function handleBdApi(e){
@@ -87,7 +97,18 @@ function Filter(props) {
           <option value="API">API</option>
         </select>
       </div>
-
+      {/* --------------------ORDENAR POR PESO --------------------*/}
+      <div className="name-filter">
+        <select
+          className="filtro"
+          name="peso"
+          onChange={(e) => handleOrderWe(e)}
+        >
+          <option value="All">Ordenar por peso</option>
+          <option value="ASC">ASC</option>
+          <option value="DES">DES</option>
+        </select>
+      </div>
     </div>
   );
 }
@@ -102,6 +123,7 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   getBreeds,
   orderByName,
+  orderByWeight,
   getTemperaments,
   filterByTemperaments
 })(Filter);
