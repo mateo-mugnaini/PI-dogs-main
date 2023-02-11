@@ -1,19 +1,17 @@
 //imports
-import React, { useEffect, useState, useSelector} from "react";
+import React, { useEffect, useState, useSelector } from "react";
 import { connect } from "react-redux";
 import { getTemperaments } from "../../Redux/Actions/actions";
 import axios from "axios";
 import "./CreateBreed.css";
 import { Link } from "react-router-dom";
 
-
 // codigo
 
 function CreateBreed(props) {
-
-
-  const [inputs, setInputs] = useState({  // Seteo mi estado local asi puediendo modoficarlo de manera local
-    nombre: "",                           // useState se utiliza para crear un objeto de estado inputs.
+  const [inputs, setInputs] = useState({
+    // Seteo mi estado local asi puediendo modoficarlo de manera local
+    nombre: "", // useState se utiliza para crear un objeto de estado inputs.
     altura_max: "",
     altura_min: "",
     peso_min: "",
@@ -24,7 +22,8 @@ function CreateBreed(props) {
     nombreTemperamento: [],
   });
 
-  function handleSelectTemperament(e) {     // Elijo temperamentos
+  function handleSelectTemperament(e) {
+    // Elijo temperamentos
 
     const filterName = props.temperaments.filter(
       (c) => c.id.toString() === e.target.value
@@ -37,7 +36,8 @@ function CreateBreed(props) {
     });
   }
 
-  function handleChange(e) {      // Modifico los estados
+  function handleChange(e) {
+    // Modifico los estados
 
     setInputs({
       ...inputs,
@@ -61,9 +61,9 @@ function CreateBreed(props) {
         nombre: inputs.nombre,
         altura: `${inputs.altura_min} - ${inputs.altura_max}`,
         peso: `${inputs.peso_min} - ${inputs.peso_max}`,
-        anoDeVida: `${inputs.anosDeVida_min} - ${inputs.anosDeVida_max} years` ,
-        temperament: inputs.temperamentos
-      }
+        anoDeVida: `${inputs.anosDeVida_min} - ${inputs.anosDeVida_max} years`,
+        temperament: inputs.temperamentos,
+      };
       await axios.post("http://localhost:3001/dogs", formData);
       window.alert("Raza creada con exito!");
       window.location.reload();
@@ -104,7 +104,7 @@ function CreateBreed(props) {
       </div>
       <form className="form-CB" onSubmit={(e) => onSubmit(e)}>
         <div className="Form-fondo">
-{/* -------------------------------NOMNRE---------------------------------------------------------------------*/}
+          {/* -------------------------------NOMNRE---------------------------------------------------------------------*/}
           <div className="div-Label">
             <label className="label">Nombre: </label>
             <input
@@ -116,7 +116,7 @@ function CreateBreed(props) {
               required
             />
           </div>
-{/* ---------------------------------ALTURA------------------------------------------------------------------ */}
+          {/* ---------------------------------ALTURA------------------------------------------------------------------ */}
           <div className="div-Label">
             <label className="label">Altura: </label>
             <input
@@ -139,7 +139,7 @@ function CreateBreed(props) {
             />
             <label className="label">cm</label>
           </div>
-{/* ----------------------------------PESO-------------------------------------------------------------------- */}
+          {/* ----------------------------------PESO-------------------------------------------------------------------- */}
           <div className="div-Label">
             <label className="label">Peso: </label>
             <input
@@ -162,7 +162,7 @@ function CreateBreed(props) {
             />
             <label className="label"> kg</label>
           </div>
-{/* --------------------------------AÑO DE VIDA--------------------------------------------------------------- */}
+          {/* --------------------------------AÑO DE VIDA--------------------------------------------------------------- */}
           <div className="div-Label">
             <label className="label">Años de vida:</label>
             <input
@@ -184,7 +184,7 @@ function CreateBreed(props) {
               required
             />
           </div>
-{/* ---------------------------------TEMPERAMENTOS----------------------------------------------------------- */}
+          {/* ---------------------------------TEMPERAMENTOS----------------------------------------------------------- */}
           <div className="div-Label">
             <label className="label">Temperamentos: </label>
             <select
@@ -196,20 +196,22 @@ function CreateBreed(props) {
             >
               {props.temperaments &&
                 props.temperaments.map((c) => (
-                  <option value={c.id} primary={c.nombre}>{c.nombre}</option>
+                  <option value={c.id} primary={c.nombre}>
+                    {c.nombre}
+                  </option>
                 ))}
             </select>
           </div>
-{/* ----------------------------------BOTON SUMMIT------------------------------------------------------------ */}
+          {/* ----------------------------------BOTON SUMMIT------------------------------------------------------------ */}
           <div className="boton">
-             <Link to ='/home'>
-            <input className="boton-crear" type="submit" value="Crear!" />
-            {/* Boton de Crear */}
-          </Link>
+            <Link to="/home">
+              <input className="boton-crear" type="submit" value="Crear!" />
+              {/* Boton de Crear */}
+            </Link>
           </div>
         </div>
       </form>
-{/* ----------------------------------BOTON BORRAR TEMPERAMENTO----------------------------------------------- */}
+      {/* ----------------------------------BOTON BORRAR TEMPERAMENTO----------------------------------------------- */}
       <div className="opciones-temperamentos">
         {/* muestra los temperamentos seleccionados */}
         {inputs.nombreTemperamento.length > 0 &&
@@ -219,7 +221,10 @@ function CreateBreed(props) {
                 className="boton-temperamentos"
                 name={c}
                 onClick={(e) => handleDelete(e)}
-                > X </button>
+              >
+                {" "}
+                X{" "}
+              </button>
               <p>{c}</p>
             </div>
           ))}

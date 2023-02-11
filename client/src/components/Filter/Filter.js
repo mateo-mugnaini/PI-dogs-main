@@ -14,23 +14,21 @@ import "../Filter/Filter.css";
 // codigo
 
 function Filter(props) {
+  const [type, setType] = useState("All");
 
-  const [type, setType] = useState('All');
-
-    function handleSelectTemperament(e) {
-      if (e.target.value === "All") {
-        props.getBreeds();
-      } else {
-      props.filterByTemperaments(e.target.value, type)
+  function handleSelectTemperament(e) {
+    if (e.target.value === "All") {
+      props.getBreeds();
+    } else {
+      props.filterByTemperaments(e.target.value, type);
     }
   }
 
-    useEffect(() => {
-      props.getTemperaments();
-    }, []);
+  useEffect(() => {
+    props.getTemperaments();
+  }, []);
 
-    useEffect(() => {
-    }, [props.temperaments])
+  useEffect(() => {}, [props.temperaments]);
 
   function handleOrderAlf(e) {
     if (e.target.value === "All") {
@@ -48,13 +46,10 @@ function Filter(props) {
     }
   }
 
-
-
-  function handleBdApi(e){
-    props.getBreeds(e.target.value)
-    setType(e.target.value)
+  function handleBdApi(e) {
+    props.getBreeds(e.target.value);
+    setType(e.target.value);
   }
-
 
   return (
     <div className="container-filter">
@@ -72,27 +67,27 @@ function Filter(props) {
       </div>
       {/* --------------------ORDENAR TEMPERAMENTO--------------------*/}
       <div>
-      <select
-              className="filtro"
-              name="temperaments"
-              onChange={(e) => handleSelectTemperament(e)}
-              required
-            >
+        <select
+          className="filtro"
+          name="temperaments"
+          onChange={(e) => handleSelectTemperament(e)}
+          required
+        >
           <option value="All">Temperamentos</option>
-              {props.temperaments &&
-                props.temperaments.map((c) => (
-                  <option value={c.name} > {c.nombre}</option>
-                ))}
-            </select>
+          {props.temperaments &&
+            props.temperaments.map((c) => (
+              <option value={c.name}> {c.nombre}</option>
+            ))}
+        </select>
       </div>
-            {/* --------------------ORDENAR BD o API --------------------*/}
-            <div className="name-filter">
+      {/* --------------------ORDENAR BD o API --------------------*/}
+      <div className="name-filter">
         <select
           className="filtro"
           name="Alfabeticamente"
           onChange={(f) => handleBdApi(f)}
         >
-          <option value= 'All'>All</option>
+          <option value="All">All</option>
           <option value="DB">Data Base</option>
           <option value="API">API</option>
         </select>
@@ -116,7 +111,7 @@ function Filter(props) {
 function mapStateToProps(state) {
   return {
     breeds: state.breeds,
-    temperaments: state.temperaments
+    temperaments: state.temperaments,
   };
 }
 
@@ -125,5 +120,5 @@ export default connect(mapStateToProps, {
   orderByName,
   orderByWeight,
   getTemperaments,
-  filterByTemperaments
+  filterByTemperaments,
 })(Filter);
