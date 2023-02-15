@@ -9,7 +9,6 @@ export default function Cards() {
   // CARDS
 
   const razas = useSelector((state) => state.breeds);
-
   // PAGINADO
 
   const [numeroPagina, setNumeroPagina] = useState(1);
@@ -49,6 +48,7 @@ export default function Cards() {
           <button
             className="btnPag"
             onClick={() => setNumeroPagina(numeroPagina - 1)}
+            disabled={numeroPagina === 1}
           >
             BACK
           </button>
@@ -56,6 +56,7 @@ export default function Cards() {
           <button
             className="btnPag"
             onClick={() => setNumeroPagina(numeroPagina + 1)}
+            disabled={numeroPagina === Math.ceil(razas.length / grupo)}
           >
             NEXT
           </button>
