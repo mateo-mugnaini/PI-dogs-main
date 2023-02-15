@@ -75,41 +75,6 @@ export default function rootReducer(state = initialState, action) {
     };
   }
 
-  // if (action.type === ORDER_BY_WEIGHT){
-  //     const allBreeds = [...state.breeds];
-  //     console.log(allBreeds);
-
-  //     allBreeds.sort((a,b) => {
-  //         let pesoAapi = a.weight?.metric?.charAt(0) + a.weight?.metric?.charAt(1);
-  //         let pesoBapi= b.weight?.metric?.charAt(0) + b.weight?.metric?.charAt(1);
-  //         let pesoAdb = a.weight?.metric?.toString().charAt(0) + a.weight?.metric?.toString().charAt(1) ;
-  //         let pesoBdb= b.weight?.metric?.toString().charAt(0) + b.weight?.metric?.toString().charAt(1);
-  //         let ordenA = (pesoAapi || pesoAdb) ? Number(pesoAapi || pesoAdb) : '' ;
-  //         let ordenB = (pesoBapi || pesoBdb) ? Number(pesoBapi || pesoBdb) : '' ;
-
-  //         if (action.payload === 'ASC'){
-  //             if (ordenA === ordenB){
-  //                 return 0;
-  //             } else if (ordenA < ordenB){
-  //                 return -1;
-  //             } return 1
-  //         }
-  //         if (action.payload === 'DES') {
-  //             if (ordenA === ordenB) {
-  //               return 0;
-  //             } else if (ordenA < ordenB) {
-  //               return 1;
-  //             }
-  //             return -1;
-  //           }
-  //         });
-  //     return {
-  //         ...state,
-  //         breeds: allBreeds,
-  //         filtered: true
-  //     }
-  // }
-
   if (action.type === ORDER_BY_WEIGHT) {
     const allBreeds = [...state.breeds];
     allBreeds.sort((a, b) => {

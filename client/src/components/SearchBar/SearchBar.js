@@ -12,7 +12,7 @@ function SearchBar(props) {
   const dispatch = useDispatch();
   async function handleSubmit(e) {
     e.preventDefault();
-    dispatch(getBreed(nameBreeds, "ALL"));
+    dispatch(getBreed(nameBreeds, "All"));
   }
 
   return (

@@ -17,7 +17,7 @@ export default function LandingPage() {
           </div>
           <div className="texto-Landing">
             <h1> API DOGS </h1>
-            <h2> From Mateo Mugnaini </h2>
+            <h2> By Mateo Mugnaini </h2>
           </div>
         </div>
       </div>

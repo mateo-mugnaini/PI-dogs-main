@@ -66,7 +66,7 @@ function CreateBreed(props) {
       };
       await axios.post("http://localhost:3001/dogs", formData);
       window.alert("Raza creada con exito!");
-      window.location.reload();
+      window.location.href = "http://localhost:3000/home";
     } else {
       window.alert("Alguno de los campos esta vacio");
     }
@@ -204,10 +204,8 @@ function CreateBreed(props) {
           </div>
           {/* ----------------------------------BOTON SUMMIT------------------------------------------------------------ */}
           <div className="boton">
-            <Link to="/home">
-              <input className="boton-crear" type="submit" value="Crear!" />
-              {/* Boton de Crear */}
-            </Link>
+            <input className="boton-crear" type="submit" value="Crear!" />
+            {/* Boton de Crear */}
           </div>
         </div>
       </form>
